@@ -1,5 +1,90 @@
 = Quarkus Todo app
 
+Supersonic Subatomic Java
+
+https://quarkus.io/
+
+== Todo app
+
+https://quarkus.io/guides/hibernate-orm
+
+
+https://quarkus.io/guides/hibernate-orm-panache
+
+== Build and running App
+
+=== Maven
+
+[source,bash]
+----
+./mvnw compile quarkus:dev
+----
+
+[source,bash]
+----
+./mvnw clean package
+java -jar target/quarkus-techtalk-todo-0.0.1-SNAPSHOT-runner.jar
+----
+
+[source,bash]
+----
+./mvnw package -Pnative
+./target/quarkus-techtalk-todo-0.0.1-SNAPSHOT-runner
+----
+
+=== MicroProfile Health
+
+----
+@Health
+----
+
+[source,bash]
+----
+curl -X GET \
+	http://localhost:8080/health \
+	-H 'Accept: application/json' 
+----
+
+
+https://quarkus.io/guides/health-guide[quarkus.io - Health Guide]
+
+
+=== MicroProfile Metrics
+
+[source,bash]
+----
+curl -X GET \
+	http://localhost:8080/metrics/application \
+	-H 'Accept: application/json' 
+----
+
+https://quarkus.io/guides/metrics-guide[quarkus.io - Metrics Guide]
+
+
+=== OpenAPI and SwaggerUI
+
+- http://localhost:8080/openapi[OpenAPI]
+- http://localhost:8080/swagger-ui[swagger-ui]
+
+OpenAPI and Swagger-UI only works in dev and test mode. 
+
+[source,bash]
+----
+./mvnw compile quarkus:dev
+----
+
+https://quarkus.io/guides/openapi-swaggerui-guide[quarkus.io - OpenAPI SwaggerUI Guide]
+
+
+== Test
+
+[source,bash]
+----
+curl -v http://localhost:8080/todos \
+	-H 'Accept: application/json' \	
+	-H 'Content-Type: application/json' \
+	-d '{"subject":"Hello from Quarkus","body":"Content"}'
+----
 
 == YouTubes by Adam Bien
 
