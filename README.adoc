@@ -1,1 +1,13 @@
 = Quarkus Todo app
+
+
+== YouTubes by Adam Bien
+
+*Quarkus and Panache ORM*
+
+video::npAlosGwXdw[youtube,width=640,height=480]
+
+
+*Quarkus Dependency Injection--Behind The Scenes*
+
+video::fH-GbXAnoec[youtube,width=640,height=480]
