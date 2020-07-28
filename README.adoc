@@ -90,9 +90,22 @@ curl -v http://localhost:8080/todos \
 
 *Quarkus and Panache ORM*
 
+ifdef::env-github[]
+image:https://img.youtube.com/vi/npAlosGwXdw/maxresdefault.jpg[link=https://youtu.be/npAlosGwXdw]
+endif::[]
+
+ifndef::env-github[]
 video::npAlosGwXdw[youtube,width=640,height=480]
+endif::[]
 
 
 *Quarkus Dependency Injection--Behind The Scenes*
 
+ifdef::env-github[]
+image:https://img.youtube.com/vi/fH-GbXAnoec/maxresdefault.jpg[link=https://youtu.be/fH-GbXAnoec]
+endif::[]
+
+ifndef::env-github[]
 video::fH-GbXAnoec[youtube,width=640,height=480]
+endif::[]
+
