@@ -6,6 +6,19 @@ https://quarkus.io/
 
 == Todo app
 
+We need to have a database up running...
+
+[source,bash]
+----
+docker run --ulimit memlock=-1:-1 -it --rm=true \
+    --memory-swappiness=0 \
+	--name PostgreTecktalk \	
+	-e POSTGRES_USER=hibernate \
+	-e POSTGRES_PASSWORD=hibernate \
+	-e POSTGRES_DB=tecktalk \
+	-p 5432:5432 postgres:12.3
+----
+
 https://quarkus.io/guides/hibernate-orm
 
 
@@ -85,6 +98,12 @@ curl -v http://localhost:8080/todos \
 	-H 'Content-Type: application/json' \
 	-d '{"subject":"Hello from Quarkus","body":"Content"}'
 ----
+
+== Why  - Supersonic Subatomic Java
+
+We need to look into `quarkus-techtalk-todo-1.0.0-SNAPSHOT-runner.jar` to see what happens behind the screen.
+
+https://github.com/Konloch/bytecode-viewer[Bytecode Viewer]
 
 == YouTubes by Adam Bien
 
