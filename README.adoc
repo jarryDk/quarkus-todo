@@ -47,7 +47,7 @@ We need to have a database up running...
 ----
 docker run --ulimit memlock=-1:-1 -it --rm=true \
 	--memory-swappiness=0 \
-	--name PostgreTecktalk \	
+	--name PostgreTecktalk \
 	-e POSTGRES_USER=hibernate \
 	-e POSTGRES_PASSWORD=hibernate \
 	-e POSTGRES_DB=tecktalk \
@@ -164,7 +164,7 @@ Create
 [source,bash]
 ----
 curl -X POST http://localhost:8080/todos \
-	-H 'Accept: application/json' \	
+	-H 'Accept: application/json' \
 	-H 'Content-Type: application/json' \
 	-d '{"subject":"Hello from Quarkus","body":"Content"}'
 ----
@@ -179,7 +179,7 @@ Update id 10
 [source,bash]
 ----
 curl -X PUT http://localhost:8080/todos/10 \
-	-H 'Accept: application/json' \	
+	-H 'Accept: application/json' \
 	-H 'Content-Type: application/json' \
 	-d '{"subject":"Updated Hello from Quarkus","body":"Content"}'
 ----
