@@ -29,8 +29,6 @@ ifndef::env-github[]
 video::FdJKW6T2rYE[youtube,width=640,height=480]
 endif::[]
 
-
-
 == Quarkus
 
 Supersonic Subatomic Java
