@@ -4,14 +4,24 @@ Supersonic Subatomic Java
 
 https://quarkus.io/
 
-== Todo app
+
+https://quarkus.io/guides/hibernate-orm
+
+
+https://quarkus.io/guides/hibernate-orm-panache
+
+== Requirements
+
+- Java 11
+- Graalvm 20.1.0
+- Postgres
 
 We need to have a database up running...
 
 [source,bash]
 ----
 docker run --ulimit memlock=-1:-1 -it --rm=true \
-    --memory-swappiness=0 \
+	--memory-swappiness=0 \
 	--name PostgreTecktalk \	
 	-e POSTGRES_USER=hibernate \
 	-e POSTGRES_PASSWORD=hibernate \
@@ -19,30 +29,60 @@ docker run --ulimit memlock=-1:-1 -it --rm=true \
 	-p 5432:5432 postgres:12.3
 ----
 
-https://quarkus.io/guides/hibernate-orm
 
+== Todo app
 
-https://quarkus.io/guides/hibernate-orm-panache
 
 == Build and running App
 
 === Maven
 
+Build and run in dev mode
 [source,bash]
 ----
 ./mvnw compile quarkus:dev
 ----
 
+Build java version
 [source,bash]
 ----
 ./mvnw clean package
-java -jar target/quarkus-techtalk-todo-0.0.1-SNAPSHOT-runner.jar
 ----
 
+Build native version
 [source,bash]
 ----
 ./mvnw package -Pnative
-./target/quarkus-techtalk-todo-0.0.1-SNAPSHOT-runner
+----
+
+Run java version
+[source,bash]
+----
+java -jar target/quarkus-techtalk-todo-1.0.0-SNAPSHOT-runner.jar
+----
+
+This will need 
+- a installed jdk
+- target/lib/*
+
+
+Run nativ version
+[source,bash]
+----
+./target/quarkus-techtalk-todo-1.0.0-SNAPSHOT-runner
+----
+
+This will need an OS - it contains all need - app and jdk.  
+
+=== Postgres
+
+From application.properties
+
+----
+quarkus.datasource.url=jdbc:postgresql://PostgreTecktalk:5432/tecktalk
+quarkus.datasource.driver=org.postgresql.Driver
+quarkus.datasource.username=hibernate
+quarkus.datasource.password=hibernate
 ----
 
 === MicroProfile Health
@@ -81,6 +121,13 @@ https://quarkus.io/guides/metrics-guide[quarkus.io - Metrics Guide]
 
 OpenAPI and Swagger-UI only works in dev and test mode. 
 
+
+If you want to make it available in production too, you can include the following configuration in your application.properties:
+----
+quarkus.swagger-ui.always-include=true
+----
+
+
 [source,bash]
 ----
 ./mvnw compile quarkus:dev
@@ -91,12 +138,41 @@ https://quarkus.io/guides/openapi-swaggerui-guide[quarkus.io - OpenAPI SwaggerUI
 
 == Test
 
+Create
 [source,bash]
 ----
-curl -v http://localhost:8080/todos \
+curl -X POST http://localhost:8080/todos \
 	-H 'Accept: application/json' \	
 	-H 'Content-Type: application/json' \
 	-d '{"subject":"Hello from Quarkus","body":"Content"}'
+----
+
+Read id 10
+[source,bash]
+----
+curl -X GET "http://localhost:8080/todos/10" -H "accept: application/json"
+----
+
+Update id 10
+[source,bash]
+----
+curl -X PUT http://localhost:8080/todos/10 \
+	-H 'Accept: application/json' \	
+	-H 'Content-Type: application/json' \
+	-d '{"subject":"Updated Hello from Quarkus","body":"Content"}'
+----
+
+Delete id 10
+[source,bash]
+----
+curl -X DELETE "http://localhost:8080/todos/10" -H "accept: application/json"
+----
+
+
+Read from 0 to 100
+[source,bash]
+----
+curl -X GET "http://localhost:8080/todos?from=0&limit=100" -H "accept: application/json"
 ----
 
 == Why  - Supersonic Subatomic Java

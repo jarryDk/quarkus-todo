@@ -5,9 +5,7 @@ import java.io.StringWriter;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.json.Json;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
@@ -19,72 +17,53 @@ import dk.jarry.techtalk.todo.entity.ToDo;
 @RequestScoped
 public class ToDoService {
 
-    @Inject
-    EntityManager entityManager;
-    
     public ToDoService() {
 	}
 	
 	@Transactional
 	public ToDo create(ToDo toDo) {
-        if (toDo.getId() != null) {
-			throw new WebApplicationException( //
-					"ToDo not valid.", //
-					Response.Status.BAD_REQUEST);
-		}
-        entityManager.persist(toDo);
-		entityManager.flush();
-		entityManager.refresh(toDo);
-		
+		toDo.persist();
 		return toDo;
     }
 
     @Transactional
 	public ToDo read(Object id) {
-		ToDo toDo = entityManager.find(ToDo.class, id);
-		if (toDo != null) {
-			return toDo;
-		} else {
+    	ToDo toDo = ToDo.findById(id);
+		if (toDo == null) {
 			throw new WebApplicationException( //
-					"ToDo with id of " + id + " does not exist.", //
+					"toDo with id of " + id + " does not exist.", //
 					Response.Status.NOT_FOUND);
 		}
+		return toDo;
     }
     
     @Transactional
 	public ToDo update(Integer id, ToDo toDo) {
-		
-		if(toDo.getId() == null) {
-			toDo.setId(id);	
-		}	
-				
-		if (read(id) != null) {		
-			return entityManager.merge(toDo);						
-		} else {
+    	if(ToDo.findById(id) == null) {
 			throw new WebApplicationException( //
-					"ToDo with id of " + id + " does not exist.", //
+					"toDo with id of " + id + " does not exist.", //
 					Response.Status.NOT_FOUND);
 		}
+		toDo.persist();
+		return toDo;
 	}
 
 	@Transactional
 	public void delete(Object id) {
-
-		ToDo toDo = read(id);
-
-		if (toDo != null) {
-			entityManager.remove(toDo);
-		} else {
+		ToDo toDo = ToDo.findById(id);
+		if(toDo == null) {
 			throw new WebApplicationException( //
-					"ToDo with id of " + id + " does not exist.", //
+					"toDo with id of " + id + " does not exist.", //
 					Response.Status.NOT_FOUND);
 		}
+		toDo.delete();
 	}
 
 	@Transactional
-	public List<ToDo> list(Long from, Long limit) {
-		return entityManager.createQuery("SELECT f FROM ToDo f ORDER BY f.subject", ToDo.class) //
-				.getResultList();
+	public List<ToDo> list(int from, int limit) {
+		return ToDo.findAll() //
+				.page(from, limit) //
+				.list();
 	}
 
 	@Provider

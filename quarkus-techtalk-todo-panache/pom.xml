@@ -35,6 +35,43 @@
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
     <dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-resteasy-jsonb</artifactId>
+		</dependency>
+        
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-postgresql</artifactId>
+    </dependency>
+    
+    <!-- MicroProfile OpenAPI -->
+	<dependency>
+		<groupId>io.quarkus</groupId>
+		<artifactId>quarkus-smallrye-openapi</artifactId>
+	</dependency>
+    
+    <!-- MicroProfile Health -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-health</artifactId>
+    </dependency>
+    
+    <!-- MicroProfile Metrics -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-metrics</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-opentracing</artifactId>
+    </dependency>
+    
+    <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
       <scope>test</scope>
@@ -44,26 +81,7 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-opentracing</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-hibernate-orm-panache</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-health</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-metrics</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jdbc-postgresql</artifactId>
-    </dependency>
+
   </dependencies>
   <build>
     <plugins>
