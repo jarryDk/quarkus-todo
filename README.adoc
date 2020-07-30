@@ -2,13 +2,20 @@
 
 Supersonic Subatomic Java
 
-https://quarkus.io/
+Project website : https://quarkus.io/
 
+Start coding : https://code.quarkus.io/
 
-https://quarkus.io/guides/hibernate-orm
+Guides : https://quarkus.io/guides/
 
+Guides for this application
 
-https://quarkus.io/guides/hibernate-orm-panache
+- https://quarkus.io/guides/rest-json
+- https://quarkus.io/guides/hibernate-orm
+- https://quarkus.io/guides/hibernate-orm-panache
+- https://quarkus.io/guides/microprofile-health
+- https://quarkus.io/guides/microprofile-metrics
+- https://quarkus.io/guides/openapi-swaggerui
 
 == Requirements
 
@@ -28,9 +35,6 @@ docker run --ulimit memlock=-1:-1 -it --rm=true \
 	-e POSTGRES_DB=tecktalk \
 	-p 5432:5432 postgres:12.3
 ----
-
-
-== Todo app
 
 
 == Build and running App
@@ -87,9 +91,7 @@ quarkus.datasource.password=hibernate
 
 === MicroProfile Health
 
-----
-@Health
-----
+http://localhost:8080/health
 
 [source,bash]
 ----
@@ -103,6 +105,8 @@ https://quarkus.io/guides/health-guide[quarkus.io - Health Guide]
 
 
 === MicroProfile Metrics
+
+http://localhost:8080/metrics/application
 
 [source,bash]
 ----
