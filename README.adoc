@@ -3,8 +3,11 @@
 This `Quarkus Todo app` will 
 
 - Introduce Quarkus
+	* Wildfly team
+	* `A Kubernetes Native Java stack tailored for OpenJDK HotSpot and GraalVM, crafted from the best of breed Java libraries and standards.`
 	* Java (started in 1.480s)
 	* Native (started in 0.068s)
+	* Created and supported by Red Hat
 - Build a microservice (ToDo app)
 - Talk about why `Supersonic Subatomic Java`
 
@@ -17,6 +20,16 @@ public class ToDo {
     public String body;
 }
 ----
+
+ifdef::env-github[]
+image:https://img.youtube.com/vi/FdJKW6T2rYE/maxresdefault.jpg[link=https://youtu.be/FdJKW6T2rYE]
+endif::[]
+
+ifndef::env-github[]
+video::FdJKW6T2rYE[youtube,width=640,height=480]
+endif::[]
+
+
 
 == Quarkus
 
