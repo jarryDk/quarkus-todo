@@ -3,6 +3,8 @@
 This `Quarkus Todo app` will 
 
 - Introduce Quarkus
+	* Java (started in 1.480s)
+	* Native (started in 0.068s)
 - Build a microservice (ToDo app)
 - Talk about why `Supersonic Subatomic Java`
 

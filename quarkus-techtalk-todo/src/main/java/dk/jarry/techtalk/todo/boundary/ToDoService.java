@@ -82,7 +82,7 @@ public class ToDoService {
 	}
 
 	@Transactional
-	public List<ToDo> list(Long from, Long limit) {
+	public List<ToDo> list(Integer from, Integer limit) {
 		return entityManager.createQuery("SELECT f FROM ToDo f ORDER BY f.subject", ToDo.class) //
 				.getResultList();
 	}

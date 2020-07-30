@@ -56,8 +56,8 @@ public class ToDoResource {
 
 	@GET
 	public List<ToDo> list( //
-		@DefaultValue("0") @QueryParam("from") Long from, //
-		@DefaultValue("100") @QueryParam("limit") Long limit) {
+		@DefaultValue("0") @QueryParam("from") Integer from, //
+		@DefaultValue("100") @QueryParam("limit") Integer limit) {
 		return toDoService.list(from, limit);
 	}
 
